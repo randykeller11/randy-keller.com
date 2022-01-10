@@ -21,7 +21,8 @@ function Loader() {
 
 function App() {
   const [scene, setScene] = useState(0);
-  const [isTransitioning, setIsTransitioning] = useState(false);
+  const [isTransForward, setIsTransForward] = useState(false);
+  const [isTransBack, setIsTransBack] = useState(false);
 
   const divStyles = {
     "background-color": "orange",
@@ -36,7 +37,7 @@ function App() {
   return (
     <>
       <AnimatePresence>
-        {scene === 1 && (
+        {scene === 1 && !isTransBack && !isTransForward && (
           <motion.div
             className="test"
             style={divStyles}
@@ -56,8 +57,10 @@ function App() {
               <Sky />
               <Dolly
                 scene={scene}
-                isTransitioning={isTransitioning}
-                setIsTransitioning={setIsTransitioning}
+                isTransForward={isTransForward}
+                setIsTransForward={setIsTransForward}
+                isTransBack={isTransBack}
+                setIsTransBack={setIsTransBack}
                 setScene={setScene}
               />
               <JordanOne position={[0, 0, -14]} />
@@ -67,10 +70,17 @@ function App() {
         </Suspense>
         <button
           onClick={() => {
-            setIsTransitioning(true);
+            setIsTransBack(true);
           }}
         >
-          update
+          back
+        </button>
+        <button
+          onClick={() => {
+            setIsTransForward(true);
+          }}
+        >
+          forward
         </button>
       </div>
     </>
