@@ -28,9 +28,9 @@ function ProductEditor({ scene, isTransBack, isTransForward }) {
       {scene === 1 && !isTransBack && !isTransForward && (
         <motion.div
           className="colorCard"
-          initial={{ opacity: 0, y: -100 }}
-          animate={{ opacity: 0.8, y: 620 }}
-          exit={{ opacity: 0, y: 800 }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.8 }}
+          exit={{ opacity: 0 }}
           transition={{ type: "spring", stiffness: 500 }}
         ></motion.div>
       )}

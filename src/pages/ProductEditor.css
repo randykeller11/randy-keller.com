@@ -15,9 +15,10 @@
 
 .colorCard {
   border: 2px solid black;
-  height: 27.5vh;
+  height: 22vh;
   width: 70vw;
   left: 13vw;
+  bottom: 10vh;
   display: flex;
   flex-flow: column;
   justify-content: space-between;

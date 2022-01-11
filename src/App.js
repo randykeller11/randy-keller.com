@@ -75,7 +75,7 @@ function App() {
                 setIsTransBack={setIsTransBack}
                 setScene={setScene}
               />
-              <JordanOne position={[0, 0.75, -14]} />
+              <JordanOne position={[0, 0.65, -14]} />
               <ambientLight intensity={0.9} />
             </Suspense>
           </Canvas>
