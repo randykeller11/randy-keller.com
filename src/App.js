@@ -21,31 +21,47 @@ function Loader() {
 
 function App() {
   const [scene, setScene] = useState(0);
-  const [isTransitioning, setIsTransitioning] = useState(false);
+  const [isTransForward, setIsTransForward] = useState(false);
+  const [isTransBack, setIsTransBack] = useState(false);
 
   const divStyles = {
     "background-color": "orange",
-    height: "10vh",
-    width: "20vw",
+    height: "20vh",
+    width: "60vw",
+    left: "20vw",
     display: "flex",
-    "justify-content": "center",
+    "flex-flow": "column",
+    "justify-content": "space-between",
+    "text-align": "center",
     position: "absolute",
     "z-index": "2",
+    "border-radius": "30px",
+    padding: "1rem",
   };
 
   return (
     <>
       <AnimatePresence>
-        {scene === 1 && (
+        {scene === 1 && !isTransBack && !isTransForward && (
           <motion.div
-            className="test"
+            className="card"
             style={divStyles}
             initial={{ opacity: 0, y: -100 }}
-            animate={{ opacity: 1, y: 300 }}
+            animate={{ opacity: 0.8, y: 50 }}
             exit={{ opacity: 0, y: 800 }}
             transition={{ type: "spring", stiffness: 500 }}
           >
-            <h1>🍩</h1>
+            <div className="card__heading" style={{ height: "3vh" }}>
+              <h1>Custom Product Editors</h1>
+            </div>
+            <div className="card__body">
+              <h3>
+                Give your users the freedom to design your products how they
+                would like them. This level of customizability is possible with
+                just about any 3D file type and does not require multiple 3D
+                files.{" "}
+              </h3>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
@@ -56,21 +72,30 @@ function App() {
               <Sky />
               <Dolly
                 scene={scene}
-                isTransitioning={isTransitioning}
-                setIsTransitioning={setIsTransitioning}
+                isTransForward={isTransForward}
+                setIsTransForward={setIsTransForward}
+                isTransBack={isTransBack}
+                setIsTransBack={setIsTransBack}
                 setScene={setScene}
               />
-              <JordanOne position={[0, 0, -14]} />
+              <JordanOne position={[0, 0.75, -14]} />
               <ambientLight intensity={0.9} />
             </Suspense>
           </Canvas>
         </Suspense>
         <button
           onClick={() => {
-            setIsTransitioning(true);
+            setIsTransBack(true);
           }}
         >
-          update
+          back
+        </button>
+        <button
+          onClick={() => {
+            setIsTransForward(true);
+          }}
+        >
+          forward
         </button>
       </div>
     </>
