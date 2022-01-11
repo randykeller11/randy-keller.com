@@ -1,0 +1,28 @@
+.card {
+  background-color: orange;
+  height: 20vh;
+  width: 60vw;
+  left: 20vw;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  text-align: center;
+  position: absolute;
+  z-index: 2;
+  border-radius: 30px;
+  padding: 1rem;
+}
+
+.colorCard {
+  border: 2px solid black;
+  height: 27.5vh;
+  width: 70vw;
+  left: 13vw;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  position: absolute;
+  z-index: 2;
+  border-radius: 30px;
+  padding: 1rem;
+}
