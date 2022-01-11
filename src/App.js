@@ -24,7 +24,7 @@ function App() {
   const [isTransForward, setIsTransForward] = useState(false);
   const [isTransBack, setIsTransBack] = useState(false);
 
-  const divStyles = {
+  const cardStyles = {
     "background-color": "orange",
     height: "20vh",
     width: "60vw",
@@ -39,15 +39,29 @@ function App() {
     padding: "1rem",
   };
 
+  const colorCardStyles = {
+    border: "2px solid black",
+    height: "27.5vh",
+    width: "70vw",
+    left: "13vw",
+    display: "flex",
+    "flex-flow": "column",
+    "justify-content": "space-between",
+    position: "absolute",
+    "z-index": "2",
+    "border-radius": "30px",
+    padding: "1rem",
+  };
+
   return (
     <>
       <AnimatePresence>
         {scene === 1 && !isTransBack && !isTransForward && (
           <motion.div
             className="card"
-            style={divStyles}
+            style={cardStyles}
             initial={{ opacity: 0, y: -100 }}
-            animate={{ opacity: 0.8, y: 50 }}
+            animate={{ opacity: 0.8, y: 45 }}
             exit={{ opacity: 0, y: 800 }}
             transition={{ type: "spring", stiffness: 500 }}
           >
@@ -63,6 +77,16 @@ function App() {
               </h3>
             </div>
           </motion.div>
+        )}
+        {scene === 1 && !isTransBack && !isTransForward && (
+          <motion.div
+            className="colorCard"
+            style={colorCardStyles}
+            initial={{ opacity: 0, y: -100 }}
+            animate={{ opacity: 0.8, y: 620 }}
+            exit={{ opacity: 0, y: 800 }}
+            transition={{ type: "spring", stiffness: 500 }}
+          ></motion.div>
         )}
       </AnimatePresence>
       <div className="canvas">
