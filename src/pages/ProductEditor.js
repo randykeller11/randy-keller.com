@@ -9,7 +9,7 @@ function ProductEditor({ scene, isTransBack, isTransForward }) {
         <motion.div
           className="card"
           initial={{ opacity: 0, y: -100 }}
-          animate={{ opacity: 0.8, y: 45 }}
+          animate={{ opacity: 0.85, y: 45 }}
           exit={{ opacity: 0, y: 800 }}
           transition={{ type: "spring", stiffness: 500 }}
         >
