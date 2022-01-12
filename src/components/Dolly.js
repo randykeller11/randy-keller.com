@@ -20,7 +20,7 @@ function Dolly() {
         state.camera.position.z = state.camera.position.z + 0.1;
       }
       if (state.camera.position.z >= 6) {
-        AppStore.setScene();
+        AppStore.setScene(0);
         AppStore.finishTransition();
       }
     }
