@@ -1,32 +1,27 @@
-import React from "react";
 import { useFrame } from "@react-three/fiber";
+import useAppStore from "../stores/useAppStore";
 
-function Dolly({
-  scene,
-  setScene,
-  setIsTransForward,
-  isTransForward,
-  setIsTransBack,
-  isTransBack,
-}) {
+function Dolly() {
+  const AppStore = useAppStore();
+
   //first forward transition
   const firstTrans = (state) => {
-    if (scene === 0 && isTransForward) {
+    if (AppStore.scene === 0 && AppStore.isTransForward) {
       if (state.camera.position.z >= -10) {
         state.camera.position.z = state.camera.position.z - 0.1;
       }
       if (state.camera.position.z <= -10) {
-        setScene(1);
-        setIsTransForward(false);
+        AppStore.setScene(1);
+        AppStore.finishTransition();
       }
     }
-    if (scene === 1 && isTransBack) {
+    if (AppStore.scene === 1 && AppStore.isTransBack) {
       if (state.camera.position.z <= 6) {
         state.camera.position.z = state.camera.position.z + 0.1;
       }
       if (state.camera.position.z >= 6) {
-        setScene(0);
-        setIsTransBack(false);
+        AppStore.setScene();
+        AppStore.finishTransition();
       }
     }
   };

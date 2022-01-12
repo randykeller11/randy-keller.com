@@ -11,6 +11,8 @@ import {
 import { Canvas, useFrame } from "@react-three/fiber";
 import { motion, AnimatePresence } from "framer-motion";
 
+import useAppStore from "./stores/useAppStore";
+
 import ProductEditor from "./pages/ProductEditor";
 
 import Dolly from "./components/Dolly";
@@ -22,59 +24,17 @@ function Loader() {
 }
 
 function App() {
-  const [scene, setScene] = useState(0);
-  const [isTransForward, setIsTransForward] = useState(false);
-  const [isTransBack, setIsTransBack] = useState(false);
-
-  const cardStyles = {
-    "background-color": "orange",
-    height: "20vh",
-    width: "60vw",
-    left: "20vw",
-    display: "flex",
-    "flex-flow": "column",
-    "justify-content": "space-between",
-    "text-align": "center",
-    position: "absolute",
-    "z-index": "2",
-    "border-radius": "30px",
-    padding: "1rem",
-  };
-
-  const colorCardStyles = {
-    border: "2px solid black",
-    height: "27.5vh",
-    width: "70vw",
-    left: "13vw",
-    display: "flex",
-    "flex-flow": "column",
-    "justify-content": "space-between",
-    position: "absolute",
-    "z-index": "2",
-    "border-radius": "30px",
-    padding: "1rem",
-  };
+  const AppStore = useAppStore();
 
   return (
     <>
-      <ProductEditor
-        scene={scene}
-        isTransBack={isTransBack}
-        isTransForward={isTransForward}
-      />
+      <ProductEditor />
       <div className="canvas">
         <Suspense fallback={null}>
           <Canvas camera={{ position: [0, 2, 6] }}>
             <Suspense fallback={<Loader />}>
               <Sky />
-              <Dolly
-                scene={scene}
-                isTransForward={isTransForward}
-                setIsTransForward={setIsTransForward}
-                isTransBack={isTransBack}
-                setIsTransBack={setIsTransBack}
-                setScene={setScene}
-              />
+              <Dolly />
               <JordanOne position={[0, 0.65, -14]} />
               <ambientLight intensity={0.9} />
             </Suspense>
@@ -82,14 +42,14 @@ function App() {
         </Suspense>
         <button
           onClick={() => {
-            setIsTransBack(true);
+            AppStore.backPress();
           }}
         >
           back
         </button>
         <button
           onClick={() => {
-            setIsTransForward(true);
+            AppStore.forwardPress();
           }}
         >
           forward
