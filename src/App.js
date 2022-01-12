@@ -26,6 +26,14 @@ import Workspace from "./components/Workspace";
 
 import JordanOne from "./components/JordanOne";
 
+import TourHouse2 from "./components/TourHouse2";
+
+import Oculus from "./components/Oculus";
+
+import ShoppingCart from "./components/ShoppingCart";
+
+import YoutubeLogo from "./components/YoutubeLogo";
+
 function Loader() {
   const { progress } = useProgress();
   return <Html center>{progress} % loaded</Html>;
@@ -50,6 +58,15 @@ function App() {
                 rotation={[-0.08, 3.1, 0]}
               />
               <JordanOne position={[0, 0.1, -14]} />
+
+              <TourHouse2 position={[-11, -1, -27]} scale={[0.6, 0.6, 0.6]} />
+
+              <Oculus position={[-9, 15, -37]} />
+
+              <ShoppingCart position={[-9, 5, -48]} scale={[1.5, 1.5, 1.5]} />
+
+              <YoutubeLogo position={[-2, 5, -64]} scale={[0.8, 0.8, 0.8]} />
+
               <ambientLight intensity={0.9} />
             </Suspense>
           </Canvas>
