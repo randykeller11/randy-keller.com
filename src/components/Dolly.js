@@ -16,10 +16,10 @@ function Dolly() {
       }
     }
     if (AppStore.scene === 1 && AppStore.isTransBack) {
-      if (state.camera.position.z <= 6) {
+      if (state.camera.position.z <= 4) {
         state.camera.position.z = state.camera.position.z + 0.1;
       }
-      if (state.camera.position.z >= 6) {
+      if (state.camera.position.z >= 4) {
         AppStore.setScene(0);
         AppStore.finishTransition();
       }

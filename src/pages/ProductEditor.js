@@ -29,8 +29,7 @@ function ProductEditor({ scene, isTransBack, isTransForward }) {
               <h3>
                 Give your users the freedom to design your products how they
                 would like them. This level of customizability is possible with
-                just about any 3D file type and does not require multiple 3D
-                files.{" "}
+                most 3D file types and does not require multiple 3D files.{" "}
               </h3>
             </div>
           </motion.div>

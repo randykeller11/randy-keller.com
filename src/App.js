@@ -13,9 +13,17 @@ import { motion, AnimatePresence } from "framer-motion";
 
 import useAppStore from "./stores/useAppStore";
 
+// -------------------page imports-----------------------------------
+
+import Home from "./pages/Home";
 import ProductEditor from "./pages/ProductEditor";
 
 import Dolly from "./components/Dolly";
+
+//-------------------3d model imports---------------------------
+import AvatarTyping from "./components/AvatarTyping";
+import Workspace from "./components/Workspace";
+
 import JordanOne from "./components/JordanOne";
 
 function Loader() {
@@ -31,11 +39,17 @@ function App() {
       <ProductEditor />
       <div className="canvas">
         <Suspense fallback={null}>
-          <Canvas camera={{ position: [0, 2, 6] }}>
+          <Canvas camera={{ position: [1.65, 1.5, 4] }}>
             <Suspense fallback={<Loader />}>
               <Sky />
               <Dolly />
-              <JordanOne position={[0, 0.725, -14]} />
+              <AvatarTyping />
+              <Workspace
+                scale={[0.13, 0.11, 0.12]}
+                position={[-0.04, 0.19, 1.66]}
+                rotation={[-0.08, 3.1, 0]}
+              />
+              <JordanOne position={[0, 0.1, -14]} />
               <ambientLight intensity={0.9} />
             </Suspense>
           </Canvas>
