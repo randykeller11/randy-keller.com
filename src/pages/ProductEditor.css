@@ -27,3 +27,15 @@
   border-radius: 30px;
   padding: 1rem;
 }
+
+.colorCard__row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.colorCard__row__button {
+  height: 10vh;
+  width: 15vw;
+  border: 2px solid black;
+  border-radius: 20px;
+}
