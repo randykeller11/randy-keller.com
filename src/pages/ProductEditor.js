@@ -37,32 +37,38 @@ function ProductEditor({ scene, isTransBack, isTransForward }) {
       {AppStore.scene === 1 &&
         !AppStore.isTransBack &&
         !AppStore.isTransForward && (
-          <motion.div
-            className="colorCard"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 0.8 }}
-            exit={{ opacity: 0 }}
-            transition={{ type: "spring", stiffness: 500 }}
-          >
+          <div className="colorCard">
             <div className="colorCard__row">
-              {firstRowColors.map((color) => (
-                <div
+              {firstRowColors.map((color, i) => (
+                <motion.div
                   className="colorCard__row__button"
                   style={{ "background-color": color }}
+                  whileTap={{ scale: 0.8, transition: { duration: 0.25 } }}
                   onClick={() => AppStore.shoeToggle(color)}
-                ></div>
+                  initial={{ opacity: 0, x: -400 }}
+                  animate={{ opacity: 0.85, x: 0 }}
+                  exit={{ opacity: 0, x: 800 }}
+                  transition={{ type: "spring", duration: 1, delay: i * 0.1 }}
+                  whileHover={{ scale: 1.1, transition: { duration: 0.25 } }}
+                ></motion.div>
               ))}
             </div>
             <div className="colorCard__row">
-              {secondRowColors.map((color) => (
-                <div
+              {secondRowColors.map((color, i) => (
+                <motion.div
                   className="colorCard__row__button"
                   style={{ "background-color": color }}
+                  whileTap={{ scale: 0.8, transition: { duration: 0.25 } }}
                   onClick={() => AppStore.shoeToggle(color)}
-                ></div>
+                  initial={{ opacity: 0, x: -400 }}
+                  animate={{ opacity: 0.85, x: 0 }}
+                  exit={{ opacity: 0, x: 800 }}
+                  transition={{ type: "spring", duration: 1, delay: i * 0.2 }}
+                  whileHover={{ scale: 1.1, transition: { duration: 0.25 } }}
+                ></motion.div>
               ))}
             </div>
-          </motion.div>
+          </div>
         )}
     </AnimatePresence>
   );
