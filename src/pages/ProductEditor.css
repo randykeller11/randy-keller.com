@@ -1,5 +1,4 @@
 .card {
-  background-color: orange;
   height: 20vh;
   width: 60vw;
   left: 20vw;
@@ -14,7 +13,6 @@
 }
 
 .colorCard {
-  border: 2px solid black;
   height: 22vh;
   width: 70vw;
   left: 13vw;

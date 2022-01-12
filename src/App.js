@@ -35,7 +35,7 @@ function App() {
             <Suspense fallback={<Loader />}>
               <Sky />
               <Dolly />
-              <JordanOne position={[0, 0.65, -14]} />
+              <JordanOne position={[0, 0.725, -14]} />
               <ambientLight intensity={0.9} />
             </Suspense>
           </Canvas>

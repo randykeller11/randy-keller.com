@@ -6,9 +6,9 @@ import useAppStore from "../stores/useAppStore";
 function ProductEditor({ scene, isTransBack, isTransForward }) {
   const AppStore = useAppStore();
 
-  const firstRowColors = ["lightBlue", "orange", "gold", "red"];
+  const firstRowColors = ["lightBlue", "lightGreen", "#E59595", "gold"];
 
-  const secondRowColors = ["purple", "green", "blue", "brown"];
+  const secondRowColors = ["#FFA9F4", "#FFAD64", "#68A5FF", "#AF7A56"];
 
   return (
     <AnimatePresence>
@@ -50,6 +50,7 @@ function ProductEditor({ scene, isTransBack, isTransForward }) {
                 <div
                   className="colorCard__row__button"
                   style={{ "background-color": color }}
+                  onClick={() => AppStore.shoeToggle(color)}
                 ></div>
               ))}
             </div>
@@ -58,6 +59,7 @@ function ProductEditor({ scene, isTransBack, isTransForward }) {
                 <div
                   className="colorCard__row__button"
                   style={{ "background-color": color }}
+                  onClick={() => AppStore.shoeToggle(color)}
                 ></div>
               ))}
             </div>
