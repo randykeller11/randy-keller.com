@@ -11,7 +11,19 @@ import {
 import { Canvas, useFrame } from "@react-three/fiber";
 import { motion, AnimatePresence } from "framer-motion";
 
+import useAppStore from "./stores/useAppStore";
+
+// -------------------page imports-----------------------------------
+
+import Home from "./pages/Home";
+import ProductEditor from "./pages/ProductEditor";
+
 import Dolly from "./components/Dolly";
+
+//-------------------3d model imports---------------------------
+import AvatarTyping from "./components/AvatarTyping";
+import Workspace from "./components/Workspace";
+
 import JordanOne from "./components/JordanOne";
 
 function Loader() {
@@ -20,79 +32,38 @@ function Loader() {
 }
 
 function App() {
-  const [scene, setScene] = useState(0);
-  const [isTransForward, setIsTransForward] = useState(false);
-  const [isTransBack, setIsTransBack] = useState(false);
-
-  const divStyles = {
-    "background-color": "orange",
-    height: "20vh",
-    width: "60vw",
-    left: "20vw",
-    display: "flex",
-    "flex-flow": "column",
-    "justify-content": "space-between",
-    "text-align": "center",
-    position: "absolute",
-    "z-index": "2",
-    "border-radius": "30px",
-    padding: "1rem",
-  };
+  const AppStore = useAppStore();
 
   return (
     <>
-      <AnimatePresence>
-        {scene === 1 && !isTransBack && !isTransForward && (
-          <motion.div
-            className="card"
-            style={divStyles}
-            initial={{ opacity: 0, y: -100 }}
-            animate={{ opacity: 0.8, y: 50 }}
-            exit={{ opacity: 0, y: 800 }}
-            transition={{ type: "spring", stiffness: 500 }}
-          >
-            <div className="card__heading" style={{ height: "3vh" }}>
-              <h1>Custom Product Editors</h1>
-            </div>
-            <div className="card__body">
-              <h3>
-                Give your users the freedom to design your products how they
-                would like them. This level of customizability is possible with
-                just about any 3D file type and does not require multiple 3D
-                files.{" "}
-              </h3>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <ProductEditor />
       <div className="canvas">
         <Suspense fallback={null}>
-          <Canvas camera={{ position: [0, 2, 6] }}>
+          <Canvas camera={{ position: [1.65, 1.5, 4] }}>
             <Suspense fallback={<Loader />}>
               <Sky />
-              <Dolly
-                scene={scene}
-                isTransForward={isTransForward}
-                setIsTransForward={setIsTransForward}
-                isTransBack={isTransBack}
-                setIsTransBack={setIsTransBack}
-                setScene={setScene}
+              <Dolly />
+              <AvatarTyping />
+              <Workspace
+                scale={[0.13, 0.11, 0.12]}
+                position={[-0.04, 0.19, 1.66]}
+                rotation={[-0.08, 3.1, 0]}
               />
-              <JordanOne position={[0, 0.75, -14]} />
+              <JordanOne position={[0, 0.1, -14]} />
               <ambientLight intensity={0.9} />
             </Suspense>
           </Canvas>
         </Suspense>
         <button
           onClick={() => {
-            setIsTransBack(true);
+            AppStore.backPress();
           }}
         >
           back
         </button>
         <button
           onClick={() => {
-            setIsTransForward(true);
+            AppStore.forwardPress();
           }}
         >
           forward
