@@ -26,7 +26,7 @@ import Workspace from "./components/Workspace";
 
 import JordanOne from "./components/JordanOne";
 
-import TourHouse2 from "./components/TourHouse2";
+import ModelHome3 from "./components/ModelHome3";
 
 import Oculus from "./components/Oculus";
 
@@ -59,11 +59,11 @@ function App() {
               />
               <JordanOne position={[0, 0.1, -14]} />
 
-              <TourHouse2 position={[-11, -1, -27]} scale={[0.6, 0.6, 0.6]} />
+              <ModelHome3 position={[-31, -1, -27]} scale={[0.6, 0.6, 0.6]} />
 
-              <Oculus position={[-9, 15, -37]} />
+              <Oculus position={[-29, 15, -37]} />
 
-              <ShoppingCart position={[-9, 5, -48]} scale={[1.5, 1.5, 1.5]} />
+              <ShoppingCart position={[-29, 5, -48]} scale={[1.5, 1.5, 1.5]} />
 
               <YoutubeLogo position={[-2, 5, -64]} scale={[0.8, 0.8, 0.8]} />
 

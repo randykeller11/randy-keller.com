@@ -29,7 +29,7 @@ function Dolly() {
   const secondTrans = (state) => {
     if (AppStore.scene === 1 && AppStore.isTransForward) {
       state.camera.position.z = state.camera.position.z - 0.1;
-      state.camera.position.x = state.camera.position.x - 0.1;
+      state.camera.position.x = state.camera.position.x - 0.3;
 
       if (state.camera.position.z <= -20) {
         AppStore.setScene(2);
@@ -39,7 +39,7 @@ function Dolly() {
     if (AppStore.scene === 2 && AppStore.isTransBack) {
       if (state.camera.position.z <= -10) {
         state.camera.position.z = state.camera.position.z + 0.1;
-        state.camera.position.x = state.camera.position.x + 0.1;
+        state.camera.position.x = state.camera.position.x + 0.3;
       }
       if (state.camera.position.z >= -10) {
         AppStore.setScene(1);
