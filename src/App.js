@@ -13,6 +13,9 @@ import { motion, AnimatePresence } from "framer-motion";
 
 import useAppStore from "./stores/useAppStore";
 
+//---------------------arrow icon imports------------------------
+import arrow from "./assets/arrow.png";
+
 // -------------------page imports-----------------------------------
 
 import Home from "./pages/Home";
@@ -44,7 +47,31 @@ function App() {
 
   return (
     <>
+      {AppStore.canvasLoaded &&
+        AppStore.scene != 0 &&
+        !AppStore.isTransForward &&
+        !AppStore.isTransBack && (
+          <img
+            src={arrow}
+            style={{ transform: "rotate(180deg)" }}
+            onClick={() => {
+              AppStore.backPress();
+            }}
+          />
+        )}
+      {AppStore.canvasLoaded &&
+        !AppStore.isTransForward &&
+        !AppStore.isTransBack && (
+          <img
+            src={arrow}
+            style={{ right: "1vw" }}
+            onClick={() => {
+              AppStore.forwardPress();
+            }}
+          />
+        )}
       <ProductEditor />
+      <Home />
       <div className="canvas">
         <Suspense fallback={null}>
           <Canvas camera={{ position: [1.65, 1.5, 4] }}>
@@ -57,34 +84,24 @@ function App() {
                 position={[-0.04, 0.19, 1.66]}
                 rotation={[-0.08, 3.1, 0]}
               />
-              <JordanOne position={[0, 0.1, -14]} />
+              <JordanOne position={[18.1, 0.1, 6]} />
 
-              <ModelHome3 position={[-31, -1, -27]} scale={[0.6, 0.6, 0.6]} />
+              <ModelHome3
+                position={[46.5, -1, 14.5]}
+                scale={[0.5, 0.5, 0.5]}
+                rotation={[0.5, 3.5, 0.2]}
+              />
 
-              <Oculus position={[-29, 15, -37]} />
+              {/* <Oculus position={[-29, 15, -37]} />
 
               <ShoppingCart position={[-29, 5, -48]} scale={[1.5, 1.5, 1.5]} />
 
-              <YoutubeLogo position={[-2, 5, -64]} scale={[0.8, 0.8, 0.8]} />
+              <YoutubeLogo position={[-2, 5, -64]} scale={[0.8, 0.8, 0.8]} /> */}
 
               <ambientLight intensity={0.9} />
             </Suspense>
           </Canvas>
         </Suspense>
-        <button
-          onClick={() => {
-            AppStore.backPress();
-          }}
-        >
-          back
-        </button>
-        <button
-          onClick={() => {
-            AppStore.forwardPress();
-          }}
-        >
-          forward
-        </button>
       </div>
     </>
   );

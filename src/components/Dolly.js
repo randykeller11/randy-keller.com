@@ -4,44 +4,46 @@ import useAppStore from "../stores/useAppStore";
 function Dolly() {
   const AppStore = useAppStore();
 
-  //first forward transition
+  //first transition
   const firstTrans = (state) => {
     if (AppStore.scene === 0 && AppStore.isTransForward) {
-      state.camera.position.z = state.camera.position.z - 0.1;
+      state.camera.position.z = state.camera.position.z + 0.1;
+      state.camera.position.x = state.camera.position.x + 0.3;
 
-      if (state.camera.position.z <= -10) {
+      if (state.camera.position.z >= 10) {
         AppStore.setScene(1);
         AppStore.finishTransition();
       }
     }
     if (AppStore.scene === 1 && AppStore.isTransBack) {
-      if (state.camera.position.z <= 4) {
-        state.camera.position.z = state.camera.position.z + 0.1;
-      }
       if (state.camera.position.z >= 4) {
+        state.camera.position.z = state.camera.position.z - 0.1;
+        state.camera.position.x = state.camera.position.x - 0.3;
+      }
+      if (state.camera.position.z <= 4) {
         AppStore.setScene(0);
         AppStore.finishTransition();
       }
     }
   };
 
-  //second forward transition
+  //second transition
   const secondTrans = (state) => {
     if (AppStore.scene === 1 && AppStore.isTransForward) {
-      state.camera.position.z = state.camera.position.z - 0.1;
-      state.camera.position.x = state.camera.position.x - 0.3;
+      state.camera.position.z = state.camera.position.z + 0.1;
+      state.camera.position.x = state.camera.position.x + 0.3;
 
-      if (state.camera.position.z <= -20) {
+      if (state.camera.position.z >= 20) {
         AppStore.setScene(2);
         AppStore.finishTransition();
       }
     }
     if (AppStore.scene === 2 && AppStore.isTransBack) {
-      if (state.camera.position.z <= -10) {
-        state.camera.position.z = state.camera.position.z + 0.1;
-        state.camera.position.x = state.camera.position.x + 0.3;
+      if (state.camera.position.z >= 10) {
+        state.camera.position.z = state.camera.position.z - 0.1;
+        state.camera.position.x = state.camera.position.x - 0.3;
       }
-      if (state.camera.position.z >= -10) {
+      if (state.camera.position.z <= 10) {
         AppStore.setScene(1);
         AppStore.finishTransition();
       }

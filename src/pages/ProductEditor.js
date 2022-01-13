@@ -45,9 +45,9 @@ function ProductEditor({ scene, isTransBack, isTransForward }) {
                   style={{ "background-color": color }}
                   whileTap={{ scale: 0.8, transition: { duration: 0.25 } }}
                   onClick={() => AppStore.shoeToggle(color)}
-                  initial={{ opacity: 0, x: -400 }}
+                  initial={{ opacity: 0, x: 800 }}
                   animate={{ opacity: 0.85, x: 0 }}
-                  exit={{ opacity: 0, x: 800 }}
+                  exit={{ opacity: 0, x: -400 }}
                   transition={{ type: "spring", duration: 1, delay: i * 0.1 }}
                   whileHover={{ scale: 1.1, transition: { duration: 0.25 } }}
                 ></motion.div>
@@ -60,9 +60,9 @@ function ProductEditor({ scene, isTransBack, isTransForward }) {
                   style={{ "background-color": color }}
                   whileTap={{ scale: 0.8, transition: { duration: 0.25 } }}
                   onClick={() => AppStore.shoeToggle(color)}
-                  initial={{ opacity: 0, x: -400 }}
+                  initial={{ opacity: 0, x: 800 }}
                   animate={{ opacity: 0.85, x: 0 }}
-                  exit={{ opacity: 0, x: 800 }}
+                  exit={{ opacity: 0, x: -800 }}
                   transition={{ type: "spring", duration: 1, delay: i * 0.2 }}
                   whileHover={{ scale: 1.1, transition: { duration: 0.25 } }}
                 ></motion.div>
